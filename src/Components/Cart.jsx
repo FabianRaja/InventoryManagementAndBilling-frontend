@@ -2,10 +2,13 @@ import { useContext, useEffect } from "react";
 import { AppCtx } from "../Context/AppContext";
 import { billProduct } from "../Helpers/helper";
 import easyinvoice from 'easyinvoice';
+import { useNavigate } from "react-router-dom";
 
 export default function Cart(){
 
   const {cartObj,setCartObj,cartCount,setCartCount,totalPrice,setTotalPrice,loading,setLoading}=useContext(AppCtx);
+
+  const navigate=useNavigate();
 
   async function removeFunction(name){
       const filterData=cartObj.filter((value,index)=>value.description!=name);
@@ -40,7 +43,11 @@ export default function Cart(){
     await easyinvoice.createInvoice(data,function(result){
       easyinvoice.download("Bill.pdf",result.pdf)
     })
-    setLoading("off");
+    await setLoading("off");
+    setTimeout(()=>{
+      navigate("/dashboard");
+      window.location.reload();
+    },2000)
   }
   useEffect(()=>{
         if(cartObj.length!=0){
