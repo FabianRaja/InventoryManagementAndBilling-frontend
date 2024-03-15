@@ -1,6 +1,17 @@
+import { useNavigate } from "react-router-dom";
 import Background from "./Background";
+import { useContext, useEffect } from "react";
+import { AppCtx } from "../Context/AppContext";
 
 export default function BasePage({children}){
+
+    const navigate=useNavigate();
+
+    const {setResult,switching,setSwitching}=useContext(AppCtx);
+
+    useEffect(()=>{
+           setResult("");
+    },[])
     return(
         <div className="base-page-section">
             <Background>
@@ -17,8 +28,14 @@ export default function BasePage({children}){
             <div className="card-body">
                 
             <div className="join grid grid-cols-2">
-            <button className="join-item btn btn-outline">Login</button>
-            <button className="join-item btn btn-outline">Register</button>
+            <button className={switching==="register"?"join-item btn btn-outline  bg-neutral text-base-100 border-0 font-bold":"join-item btn btn-outline font-bold"} onClick={()=>{
+                navigate("/");
+                setSwitching("register")
+                }}>Register</button>
+            <button className={switching==="login"?"join-item btn btn-outline bg-neutral text-base-100 border-0 font-bold":"join-item btn btn-outline font-bold"} onClick={()=>{
+                navigate("/login");
+                setSwitching("login");
+                }}>Login</button>
             </div>
             {children}
             

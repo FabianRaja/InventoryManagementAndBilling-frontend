@@ -1,7 +1,63 @@
+import { useContext, useEffect } from "react";
+import { AppCtx } from "../Context/AppContext";
+import { billProduct } from "../Helpers/helper";
+import easyinvoice from 'easyinvoice';
+
 export default function Cart(){
-    return(
+
+  const {cartObj,setCartObj,cartCount,setCartCount,totalPrice,setTotalPrice,loading,setLoading}=useContext(AppCtx);
+
+  async function removeFunction(name){
+      const filterData=cartObj.filter((value,index)=>value.description!=name);
+      await setCartObj(filterData);
+      await setCartCount(cartCount-1);
+      if(filterData.length!=0){
+        const price=filterData.reduce((accumulator,value,index)=>{
+          return accumulator+=(value.quantity*value.price)
+      },0)
+      await setTotalPrice(price);
+      }else{
+        setTotalPrice(0);
+      }
+  }
+
+     
+
+  async function billProductFunction(){
+    setLoading("on");
+    const object={
+      id:localStorage.getItem("id"),
+      billData:cartObj
+    };
+    await billProduct(object).then((response)=>console.log(response.message)).catch((response)=>console.log(response.message));
+
+    var data = {
+      apiKey: "free", // Please register to receive a production apiKey: https://app.budgetinvoice.com/register
+      mode: "development", // Production or development, defaults to production
+      products:cartObj
+    };
+  
+    await easyinvoice.createInvoice(data,function(result){
+      easyinvoice.download("Bill.pdf",result.pdf)
+    })
+    setLoading("off");
+  }
+  useEffect(()=>{
+        if(cartObj.length!=0){
+          const price=cartObj.reduce((accumulator,value,index)=>{
+            return accumulator+=(value.quantity*value.price)
+           },0);
+           setTotalPrice(price);
+        }else{
+          setTotalPrice(0)
+        }
+        setLoading("off")
+  },[])
+  
+  
+  return(
         <div className="cart-section text-center background-set">
-  <h1 className="font-bold text-xl mt-10 mb-10">CART</h1>
+  <h1 className="font-bold text-xl mt-10 mb-10">IN CART</h1>
   <div className="overflow-x-auto">
   <table className="table">
     {/* head */}
@@ -10,26 +66,25 @@ export default function Cart(){
         <th></th>
         <th>Product Name</th>
         <th>Product Price</th>
-        <th>Product Quantity</th>
-        <th>Add Product</th>
-        <th>Remove Product</th>
+        <th>Quantity</th>
+        <th>Action</th>
       </tr>
     </thead>
-    <tbody>
-      {/* row 1 */}
+    {cartObj?cartObj?.map((value,index)=>(
+      <tbody key={index}>
       <tr className="font-bold text-center">
-        <th>1</th>
-        <td>Monitor</td>
-        <td>12000</td>
-        <td>1</td>
-        <td className="cursor-pointer">+</td>
-        <td className="cursor-pointer">-</td>
+        <th>{index+1}</th>
+        <td className="uppercase">{value.description}</td>
+        <td>{value.price}</td>
+        <td>{value.quantity}</td>
+        <td className="cursor-pointer uppercase" onClick={()=>removeFunction(value.description)}>Remove</td>
       </tr>
     </tbody>
+    )):""}
   </table>
 </div>
-<h2 className="mt-10 font-bold">TOTAL PRICE-  50000</h2>
-<button className="btn btn-neutral mt-10">Get Bill</button>
+<h1 className="font-bold mt-5 uppercase">Total Price - {totalPrice}</h1>
+<button className="btn btn-neutral mt-5" onClick={()=>billProductFunction()}>{loading==="on"?<span className="loading loading-ball loading-xs"></span>:"Get Bill"}</button>
 
 </div>
     )

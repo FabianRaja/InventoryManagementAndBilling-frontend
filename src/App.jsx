@@ -8,6 +8,7 @@ import DashboardPage from './Pages/DashboardPage'
 import AddProductPage from './Pages/AddProductPage'
 import EditProductPage from './Pages/EditProductPage'
 import CartPage from './Pages/CartPage'
+import ActivationPage from './Pages/ActivationPage'
 
 
 function App() {
@@ -17,7 +18,8 @@ function App() {
       <Route exact path="/" element={<RegisterPage/>}/>
       <Route path="/login" element={<LoginPage/>}/>
       <Route path="/forgot" element={<ForgotPage/>}/>
-      <Route path="/reset" element={<ResetPage/>}/>
+      <Route path="/reset/:id" element={<ResetPage/>}/>
+      <Route path="/activation/:id" element={<ActivationPage/>}/>
       <Route path="/dashboard" element={<DashboardPage/>}/>
       <Route path="/addproduct" element={<AddProductPage/>}/>
       <Route path="/editproduct" element={<EditProductPage/>}/>

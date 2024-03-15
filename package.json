@@ -10,9 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "easyinvoice": "^3.0.47",
+    "formik": "^2.4.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.22.3"
+    "react-router-dom": "^6.22.3",
+    "sweetalert2": "^11.10.6",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.56",
