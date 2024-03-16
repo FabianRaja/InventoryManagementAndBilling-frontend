@@ -131,8 +131,10 @@ export default function DashboardPage(){
             </div>
             
             </div>
-            </div><hr/>
-        
+            </div>
+            
+            <hr/>
+            
             <div className="overflow-x-auto">
   <table className="table table-xs background-set text-center">
     <thead>
@@ -161,17 +163,10 @@ export default function DashboardPage(){
       )):""}
     
   </table>
+  
 </div>
 
-{/* <div className="toast toast-center">
-  <div className="alert alert-neutral pl-8">
-    <span>Product added successfully</span>
-  </div>
-</div> */}
-
-
-
-            </WorkSpace>
-        </div>
+          </WorkSpace>
+</div>
     )
 }

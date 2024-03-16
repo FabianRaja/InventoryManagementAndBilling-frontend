@@ -3,6 +3,7 @@ import { AppCtx } from "../Context/AppContext";
 import { billProduct } from "../Helpers/helper";
 import easyinvoice from 'easyinvoice';
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 export default function Cart(){
 
@@ -11,17 +12,36 @@ export default function Cart(){
   const navigate=useNavigate();
 
   async function removeFunction(name){
-      const filterData=cartObj.filter((value,index)=>value.description!=name);
-      await setCartObj(filterData);
-      await setCartCount(cartCount-1);
-      if(filterData.length!=0){
-        const price=filterData.reduce((accumulator,value,index)=>{
-          return accumulator+=(value.quantity*value.price)
-      },0)
-      await setTotalPrice(price);
-      }else{
-        setTotalPrice(0);
+
+
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You want to remove this item from cart!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, remove it!"
+    }).then(async(result) => {
+      if(result.isConfirmed) {
+            const filterData=cartObj.filter((value,index)=>value.description!=name);
+            await setCartObj(filterData);
+            await setCartCount(cartCount-1);
+            if(filterData.length!=0){
+              const price=filterData.reduce((accumulator,value,index)=>{
+                return accumulator+=(value.quantity*value.price)
+            },0)
+            await setTotalPrice(price);
+            }else{
+              setTotalPrice(0);
+            }
+        await Swal.fire({
+          title: "Removed!",
+          text: "Product has been removed from cart",
+          icon: "success"
+        });
       }
+    });
   }
 
      
