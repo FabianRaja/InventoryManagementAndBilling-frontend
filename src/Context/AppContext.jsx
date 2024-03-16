@@ -16,11 +16,11 @@ export default function AppContext({children}){
     const [cartCount,setCartCount]=useState(0);
     const [totalPrice,setTotalPrice]=useState(0);
 
-    useEffect(()=>{
+    useEffect(async()=>{
         const object={
             id:localStorage.getItem("id")
         }
-         getAllData(object).then((response)=>{
+        await getAllData(object).then(async(response)=>{
             if(response.message==="all product fetched Successfully"){
                 const object=response.data;
                 object.sort((a,b)=>{
@@ -34,7 +34,7 @@ export default function AppContext({children}){
             }else{
                 console.log(response.message);
             }
-            }).catch((response)=>console.log(response));        
+            }).catch((response)=>console.log(response.message));        
     },[])
     return(
         <AppCtx.Provider

@@ -150,7 +150,7 @@ export default function DashboardPage(){
         <th>Buy</th> 
       </tr>
     </thead> 
-      {data?data?.map((value,index)=>(
+      {data && data?.map((value,index)=>(
          <tbody className="font-bold" key={index}>
         <tr>
         <th>{index+1}</th> 
@@ -162,7 +162,7 @@ export default function DashboardPage(){
         <td className="cursor-pointer uppercase" onClick={()=>addToCartFunction(value.productName,value.productQuantity,value.productPrice)}>Add to Cart</td> 
       </tr>
       </tbody> 
-      )):""}
+      ))}
     
   </table>
   
