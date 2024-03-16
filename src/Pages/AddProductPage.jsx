@@ -39,7 +39,8 @@ export default function AddProductPage(){
 
     useEffect(()=>{
         if(!localStorage.getItem("token")){
-            navigate("/")
+            navigate("/");
+            console.log("hehehehe")
         };
         setResult("");
         setLoading("off")

@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import WorkSpace from "../Components/WorkSpace";
 import { useContext, useEffect } from "react";
 import { AppCtx } from "../Context/AppContext";
-import { deleteProduct } from "../Helpers/helper";
+import { deleteProduct, getAllData } from "../Helpers/helper";
 import Swal from "sweetalert2";
 
 
@@ -10,7 +10,7 @@ export default function DashboardPage(){
 
   const navigate=useNavigate();
 
-  const {data,setProductName,setProductPrice,setProductQuantity,cartObj,cartCount,setCartCount}=useContext(AppCtx);
+  const {data,setData,setProductName,setProductPrice,setProductQuantity,cartObj,cartCount,setCartCount}=useContext(AppCtx);
   
  
   let quantity=0;
@@ -99,6 +99,8 @@ export default function DashboardPage(){
         
  }
 
+
+
   useEffect(()=>{
     if(!localStorage.getItem("token")){
         navigate("/")
@@ -106,7 +108,26 @@ export default function DashboardPage(){
     setProductName("");
     setProductQuantity("");
     setProductPrice("");
-},[])
+    //fetching data
+    const object={
+      id:localStorage.getItem("id")
+    }
+    getAllData(object).then(async(response)=>{
+      if(response.message==="all product fetched Successfully"){
+          const object=response.data;
+          object.sort((a,b)=>{
+              const nameA=a.productName.toLowerCase();
+              const nameB=b.productName.toLowerCase();
+              if (nameA < nameB) return -1;
+              if (nameA > nameB) return 1;
+              return 0;
+          })
+          setData(object);
+      }else{
+          console.log(response.message);
+      }
+      }).catch((response)=>{console.log(response.message)});   
+  },[])
 
     return(
       
