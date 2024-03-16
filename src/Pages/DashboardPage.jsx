@@ -109,7 +109,9 @@ export default function DashboardPage(){
 },[])
 
     return(
+      
         <div className="dashboard-section text-center">
+          
             <WorkSpace>
                 
             <div className="stats stats-vertical lg:stats-horizontal shadow mt-4 mb-4">
@@ -165,7 +167,6 @@ export default function DashboardPage(){
   </table>
   
 </div>
-
           </WorkSpace>
 </div>
     )
