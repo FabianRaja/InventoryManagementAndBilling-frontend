@@ -1,2 +1,2 @@
-// export const API="https://inventorymanagementsystemandbilling.onrender.com"
-export const API="http://localhost:9000"
+export const API="https://inventorymanagementsystemandbilling.onrender.com"
+// export const API="http://localhost:9000"
