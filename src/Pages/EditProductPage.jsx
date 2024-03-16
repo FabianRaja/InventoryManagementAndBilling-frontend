@@ -7,10 +7,11 @@ import { editProduct } from "../Helpers/helper";
 import { useNavigate } from "react-router-dom";
 
 export default function EditProductPage(){
-
+    //required states is imported using useContext
     const {productName,productQuantity,productPrice,result,setResult,loading,setLoading}=useContext(AppCtx);
+    //usenavigate is used to navigate between pages
     const navigate=useNavigate();
-
+    //useEffect is used to make changes when the page is loaded
     useEffect(()=>{
         if(!localStorage.getItem("token")){
             navigate("/")
@@ -18,7 +19,7 @@ export default function EditProductPage(){
         setResult("");
         setLoading("off")
     },[])
-
+    //formik is used for edit product form with validation schema as editSchema
     const {values,handleChange,handleSubmit,handleBlur,errors,touched}=useFormik({
         initialValues:{
             oldProductName:productName,
@@ -30,6 +31,7 @@ export default function EditProductPage(){
         validationSchema:editSchema,
         onSubmit:(object)=>{
             setLoading("on")
+            //edit product function is called to edit the product and response is handled
             editProduct(object).then((response)=>{
                 setTimeout(()=>{
                     setLoading("off");

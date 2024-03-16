@@ -7,11 +7,11 @@ import { addProduct } from "../Helpers/helper";
 import { AppCtx } from "../Context/AppContext";
 
 export default function AddProductPage(){
-
+    //useNavigate is used to navigate between pages
     const navigate=useNavigate();
-
+    //required states is imported using useContext
     const {result,setResult,loading,setLoading}=useContext(AppCtx);
-
+    //formik is used for addproduct form and validation schema as addSchema
     const {values,handleChange,handleSubmit,handleBlur,errors,touched}=useFormik({
         initialValues:{
             productName:"",
@@ -36,7 +36,7 @@ export default function AddProductPage(){
                 setResult(response.message)});
         }
     })
-
+    //useEffect is used to make changes when the page is loaded
     useEffect(()=>{
         if(!localStorage.getItem("token")){
             navigate("/");

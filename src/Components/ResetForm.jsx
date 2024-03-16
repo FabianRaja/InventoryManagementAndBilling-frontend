@@ -6,12 +6,13 @@ import { useContext, useEffect } from "react";
 import { AppCtx } from "../Context/AppContext";
 
 export default function ResetForm(){
-
+    //useParams is used to get the id from the url
     const params=useParams();
     const id=params.id;
-
+    //required states is imported using useContext
     const {result,setResult,setSwitching,loading,setLoading}=useContext(AppCtx);
 
+    //formik is used for reset password form and validation schema as resetSchema
     const {values,handleChange,handleSubmit,handleBlur,errors,touched}=useFormik({
         initialValues:{
             password:"",
@@ -31,7 +32,7 @@ export default function ResetForm(){
            
         }
     })
-
+   //useEffect is used to make changes when the page is opened
     useEffect(()=>{
            setSwitching("reset");
            setLoading("off");

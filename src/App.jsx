@@ -12,7 +12,7 @@ import ActivationPage from './Pages/ActivationPage'
 
 
 function App() {
-  
+   //Routes and Route is imported from React router dom for navigation between pages
   return (
     <Routes>
       <Route exact path="/" element={<RegisterPage/>}/>

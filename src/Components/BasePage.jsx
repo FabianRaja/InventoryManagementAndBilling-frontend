@@ -5,10 +5,13 @@ import { AppCtx } from "../Context/AppContext";
 
 export default function BasePage({children}){
 
+    //useNavigate is used to navigate between pages
     const navigate=useNavigate();
 
+    //required states is imported using useContext
     const {setResult,switching,setSwitching}=useContext(AppCtx);
 
+    //useEffect is used to make changes when the page is opened
     useEffect(()=>{
            setResult("");
     },[])

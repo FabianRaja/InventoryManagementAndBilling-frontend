@@ -5,8 +5,9 @@ import { AppCtx } from "../Context/AppContext";
 import { useContext, useEffect } from "react";
 
 export default function ForgotForm(){
-
+    //required states is imported using useContext
     const {result,setResult,loading,setLoading}=useContext(AppCtx);
+    //useFormik is used for forgot password form with validation Schema as forgotSchema
     const {values,handleChange,handleSubmit,handleBlur,errors,touched}=useFormik({
         initialValues:{
             email:""
@@ -25,6 +26,7 @@ export default function ForgotForm(){
         }
     });
 
+    //useEffect is used to make changes when the page is loaded
     useEffect(()=>{
          setLoading("off");
     },[])

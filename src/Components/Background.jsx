@@ -1,5 +1,6 @@
 export default function Background({children}){
     return(
+        //animated background 
         <div className="background-section">
 
            <ul className="background">

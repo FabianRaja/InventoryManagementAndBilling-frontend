@@ -7,11 +7,12 @@ import Swal from "sweetalert2";
 
 export default function Cart(){
 
-
+  //required states is imported using useContext
   const {cartObj,setCartObj,cartCount,setCartCount,totalPrice,setTotalPrice,loading,setLoading}=useContext(AppCtx);
-
+  //useNavigate is used to navigate between pages
   const navigate=useNavigate();
 
+  //function to remove product from cart
   async function removeFunction(name){
     Swal.fire({
       title: "Are you sure?",
@@ -44,7 +45,7 @@ export default function Cart(){
   }
 
      
-
+  //function to reduce quantity from the database
   async function billProductFunction(){
     setLoading("on");
     const object={
@@ -69,6 +70,7 @@ export default function Cart(){
     },2000)
   }
 
+  //function to pay online using razorpay and to reduce quantity in the database
   function payOnlineFunction(){
     Swal.fire({
       title: "Pay via Razorpay",
@@ -120,6 +122,7 @@ export default function Cart(){
       }
     });
 }
+//useEffect is used to make changes when the page is loaded
   useEffect(()=>{
         if(cartObj.length!=0){
           const price=cartObj.reduce((accumulator,value,index)=>{

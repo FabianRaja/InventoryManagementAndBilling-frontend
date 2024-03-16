@@ -6,11 +6,11 @@ import { loginUser } from "../Helpers/helper";
 import { useNavigate } from "react-router-dom";
 
 export default function LoginForm(){
-
+    //required states is imported using useContext  
     const {result,setResult,setSwitching,loading,setLoading}=useContext(AppCtx);
-
+    //useNavigate is used to navigate between pages
     const navigate=useNavigate();
-
+    //formik is used for login form and validation schema as loginSchema
     const {values,handleChange,handleSubmit,handleBlur,errors,touched}=useFormik({
         initialValues:{
             email:"",
@@ -40,7 +40,7 @@ export default function LoginForm(){
             });
         }
     })
-
+    //useEffect is used to make changes when the page is loaded
     useEffect(()=>{
         setSwitching("login");
         setLoading("off");

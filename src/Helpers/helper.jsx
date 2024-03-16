@@ -149,7 +149,7 @@ export async function editProduct(object){
            console.log("error deleting product",error);
     }
 }
-//function to decrease quantity after billing
+//function to decrease quantity after billing for specific products
 export async function billProduct(object){
     try{
         const res=await fetch(`${API}/billProduct`,{

@@ -7,25 +7,26 @@ import Swal from "sweetalert2";
 
 
 export default function DashboardPage(){
-
+  //useNavigate is used to navigate between pages
   const navigate=useNavigate();
-
+  //required states is imported using useContext
   const {data,setData,setProductName,setProductPrice,setProductQuantity,cartObj,cartCount,setCartCount}=useContext(AppCtx);
   
- 
+  //total products quantity is calculated and stored
   let quantity=0;
   if(data){
        quantity=data.reduce((accumulator,value,index)=>{
         return accumulator+=value.productQuantity
        },0)
   };
+  //total products value is calculated and stored
   let value=0;
   if(data){
        value=data.reduce((accumulator,value,index)=>{
         return accumulator+=(value.productPrice*value.productQuantity)
        },0)
   }
-
+  //function to delete product from the database and the response is handled
   async function deleteFunction(productName){
     Swal.fire({
       title: "Are you sure?",
@@ -47,18 +48,20 @@ export default function DashboardPage(){
           text: "Product has been deleted",
           icon: "success"
         });
+        //to reload the page
         window.location.reload();
       }
     });
  
   }
+  //function to edit product
   function editFunction(name,quantity,price){
     setProductName(name);
     setProductQuantity(quantity);
     setProductPrice(price);
     navigate("/editproduct");
   }
-
+  //function to add product to cart
   async function addToCartFunction(name,quantity,price){
     //preventing from adding same product in cart multiple times
         const a=cartObj.find((value,index)=>{
@@ -100,7 +103,7 @@ export default function DashboardPage(){
  }
 
 
-
+  //useEffect is used to make changes when the page is opened
   useEffect(()=>{
     if(!localStorage.getItem("token")){
         navigate("/")
@@ -112,6 +115,7 @@ export default function DashboardPage(){
     const object={
       id:localStorage.getItem("id")
     }
+    //function to get all data from the database is called and response is handled
     getAllData(object).then(async(response)=>{
       if(response.message==="all product fetched Successfully"){
           const object=response.data;
@@ -160,7 +164,7 @@ export default function DashboardPage(){
             <hr/>
             
             <div className="overflow-x-auto">
-  <table className="table table-xs background-set text-center">
+  <table className="table table-xs background-set text-center text-neutral">
     <thead>
       <tr>
         <th></th> 

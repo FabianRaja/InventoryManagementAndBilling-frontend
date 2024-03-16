@@ -6,7 +6,7 @@ import WorkSpace from "../Components/WorkSpace";
 export default function CartPage(){
 
     
-
+    //useEffect is used to make changes when the page is loaded
     useEffect(()=>{
         if(!localStorage.getItem("token")){
             navigate("/")

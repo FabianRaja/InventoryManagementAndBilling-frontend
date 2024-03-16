@@ -5,9 +5,9 @@ import { useContext, useEffect } from "react";
 import { AppCtx } from "../Context/AppContext";
 
 export default function RegisterForm(){
-
+   //required states is imported using useContext
     const {result,setResult,setSwitching,loading,setLoading}=useContext(AppCtx);
-
+    //formik is used for register user form and validation schema as registerSchema
     const {values,handleChange,handleSubmit,handleBlur,errors,touched}=useFormik({
         initialValues:{
             email:"",
@@ -27,7 +27,7 @@ export default function RegisterForm(){
                 setResult(response.message)});
         }
     })
-
+    //useEffect is used to make changes when the page is loaded
     useEffect(()=>{
         setSwitching("register");
         setLoading("off");

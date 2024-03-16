@@ -1,3 +1,4 @@
+/* for background animation */
 @keyframes cube {
     from {
         transform: scale(0) rotate(0deg) translate(-50%, -50%);
@@ -91,6 +92,7 @@ undefined
     top: 20vh;
     border-color: #7a9ce2;
 }
+/* css used for classes */
 .background-set{
     background: #6f8ece;
 }
@@ -105,6 +107,7 @@ hr{
 .visibility-section{
     z-index: 50;
 }
+/* for custom scrollbar */
 ::-webkit-scrollbar{
     width:8px;
 }
