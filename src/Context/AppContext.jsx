@@ -35,7 +35,9 @@ export default function AppContext({children}){
                 }else{
                     console.log(response.message);
                 }
-                }).catch((response)=>console.log(response.message));
+                }).catch((response)=>{console.log(response.message)
+                window.location.reload();
+                });
         }
                 
     },[])
