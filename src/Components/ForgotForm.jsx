@@ -37,7 +37,7 @@ export default function ForgotForm(){
             <input type="text" className="grow" placeholder="Email" value={values.email} onChange={handleChange} onBlur={handleBlur} name="email"/>
             </label>
             {touched.email && errors.email?(<div className="font-bold text-xs mb-1">{errors.email}</div>):("")}
-            <button className="btn glass w-44 mb-2 font-bold" type="submit">{loading==="on"?<span className="loading loading-ball loading-xs"></span>:"Forgot Password"}</button><br/>
+            <button className="btn glass w-44 mb-2 text-neutral font-bold" type="submit">{loading==="on"?<span className="loading loading-ball loading-xs"></span>:"Forgot Password"}</button><br/>
             {result?(<div className="font-bold text-sm mt-3 capitalize">{result}</div>):""}
             </form>
         </div>

@@ -11,7 +11,7 @@ export default function WorkSpace({children}){
           
     <div className="navbar glass shadow-xl">
   <div className="flex-1">
-    <a className="btn btn-ghost text-2xl font-black" onClick={()=>{
+    <a className="btn btn-ghost text-2xl text-neutral font-black" onClick={()=>{
       navigate("/dashboard");
       }}>DASHBOARD</a>
   </div>

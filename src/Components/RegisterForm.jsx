@@ -50,7 +50,7 @@ export default function RegisterForm(){
             <input type="password" className="grow" placeholder="Password" value={values.password} onChange={handleChange} onBlur={handleBlur} name="password" />
             </label>
             {touched.password && errors.password?(<div className="font-bold text-xs mb-1">{errors.password}</div>):("")}
-            <button className="btn glass w-44 font-bold" type="submit">{loading==="on"?<span className="loading loading-ball loading-xs"></span>:"Register"}</button>
+            <button className="btn glass w-44 text-neutral font-bold" type="submit">{loading==="on"?<span className="loading loading-ball loading-xs"></span>:"Register"}</button>
             {result?(<div className="font-bold text-xs mt-1">{result}</div>):""}
             </form>
         </div>

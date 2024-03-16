@@ -27,11 +27,11 @@ export default function BasePage({children}){
             <div className="card-body">
                 
             <div className="join grid grid-cols-2">
-            <button className={switching==="register"?"join-item btn btn-outline  bg-neutral text-base-100 border-0 font-bold":"join-item btn btn-outline font-bold"} onClick={()=>{
+            <button className={switching==="register"?"join-item btn btn-outline bg-neutral text-blue-300 border-0 font-bold":"join-item btn btn-outline font-bold"} onClick={()=>{
                 navigate("/");
                 setSwitching("register")
                 }}>Register</button>
-            <button className={switching==="login"?"join-item btn btn-outline bg-neutral text-base-100 border-0 font-bold":"join-item btn btn-outline font-bold"} onClick={()=>{
+            <button className={switching==="login"?"join-item btn btn-outline bg-neutral text-blue-300 border-0 font-bold":"join-item btn btn-outline font-bold"} onClick={()=>{
                 navigate("/login");
                 setSwitching("login");
                 }}>Login</button>

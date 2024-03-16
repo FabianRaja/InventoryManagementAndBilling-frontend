@@ -49,7 +49,7 @@ export default function ResetForm(){
             <input type="password" className="grow" placeholder="Confirm Password" value={values.confirmpassword} onChange={handleChange} onBlur={handleBlur} name="confirmpassword"/>
             </label>
             {touched.confirmpassword && errors.confirmpassword?(<div className="font-bold text-xs mb-1">{errors.confirmpassword}</div>):("")}
-            <button className="btn glass w-44 mb-2 font-bold" type="submit">{loading==="on"?<span className="loading loading-ball loading-xs"></span>:"Change Password"}</button><br/>
+            <button className="btn glass w-44 mb-2 text-neutral font-bold" type="submit">{loading==="on"?<span className="loading loading-ball loading-xs"></span>:"Change Password"}</button><br/>
             {result?(<div className="font-bold text-sm mt-3 capitalize">{result}</div>):""}
             </form>
         </div>

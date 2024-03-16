@@ -59,8 +59,8 @@ export default function LoginForm(){
             <input type="password" className="grow" placeholder="Password" value={values.password} onChange={handleChange} onBlur={handleBlur} name="password" />
             </label>
             {touched.password && errors.password?(<div className="font-bold text-xs mb-1">{errors.password}</div>):("")}
-            <button className="btn glass w-44 mb-2 font-bold" type="submit">{loading==="on"?<span className="loading loading-ball loading-xs"></span>:"Login"}</button><br/>
-            <a className="font-medium cursor-pointer" onClick={()=>{
+            <button className="btn glass w-44 mb-2 text-neutral font-bold" type="submit">{loading==="on"?<span className="loading loading-ball loading-xs"></span>:"Login"}</button><br/>
+            <a className="font-medium text-neutral cursor-pointer" onClick={()=>{
                 navigate("/forgot");
                 setSwitching("forgot");
                 }}>Forgot Password?</a>
