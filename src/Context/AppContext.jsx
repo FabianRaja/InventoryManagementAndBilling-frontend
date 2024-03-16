@@ -17,24 +17,27 @@ export default function AppContext({children}){
     const [totalPrice,setTotalPrice]=useState(0);
 
     useEffect(async()=>{
-        const object={
-            id:localStorage.getItem("id")
-        }
-        await getAllData(object).then(async(response)=>{
-            if(response.message==="all product fetched Successfully"){
-                const object=response.data;
-                object.sort((a,b)=>{
-                    const nameA=a.productName.toLowerCase();
-                    const nameB=b.productName.toLowerCase();
-                    if (nameA < nameB) return -1;
-                    if (nameA > nameB) return 1;
-                    return 0;
-                })
-                setData(object);
-            }else{
-                console.log(response.message);
+        if(localStorage.getItem("id")){
+            const object={
+                id:localStorage.getItem("id")
             }
-            }).catch((response)=>console.log(response.message));        
+            await getAllData(object).then(async(response)=>{
+                if(response.message==="all product fetched Successfully"){
+                    const object=response.data;
+                    object.sort((a,b)=>{
+                        const nameA=a.productName.toLowerCase();
+                        const nameB=b.productName.toLowerCase();
+                        if (nameA < nameB) return -1;
+                        if (nameA > nameB) return 1;
+                        return 0;
+                    })
+                    setData(object);
+                }else{
+                    console.log(response.message);
+                }
+                }).catch((response)=>console.log(response.message));
+        }
+                
     },[])
     return(
         <AppCtx.Provider

@@ -95,7 +95,7 @@ export async function getAllData(id){
         const data=await res.json();
         return data;
     }catch(error){
-           console.log("error getting all data",error);
+           console.log("error getting all data");
     }
 }
 //function to add product
