@@ -27,7 +27,7 @@ export default function LoginForm(){
                         setLoading("off");
                         setResult(response.message);
                         navigate("/dashboard");
-                    },1000)              
+                    },3000)              
                 }else{
                     setTimeout(()=>{
                         setLoading("off");
