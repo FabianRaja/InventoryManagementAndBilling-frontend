@@ -17,8 +17,8 @@ export default function BasePage({children}){
             <Background>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4  text-center items-center h-screen ">
             <div className="p-10">
-                <b className="font-black text-xl">Inventory Management and Billing Application</b>
-                <p>Inventory System to control and manage products in the warehouse in real time and integrated to make it easier to develop your business</p>
+                <b className="font-black text-xl text-neutral">Inventory Management and Billing Application</b>
+                <p className="text-neutral">Inventory System to control and manage products in the warehouse in real time and integrated to make it easier to develop your business</p>
             </div>
 
             <div className="content-center-section mr-10 ml-10">
@@ -27,11 +27,11 @@ export default function BasePage({children}){
             <div className="card-body">
                 
             <div className="join grid grid-cols-2">
-            <button className={switching==="register"?"join-item btn btn-outline bg-neutral text-blue-300 border-0 font-bold":"join-item btn btn-outline font-bold"} onClick={()=>{
+            <button className={switching==="register"?"join-item btn btn-outline bg-neutral text-neutral-400 border-0 font-bold":"join-item btn btn-outline text-neutral font-bold"} onClick={()=>{
                 navigate("/");
                 setSwitching("register")
                 }}>Register</button>
-            <button className={switching==="login"?"join-item btn btn-outline bg-neutral text-blue-300 border-0 font-bold":"join-item btn btn-outline font-bold"} onClick={()=>{
+            <button className={switching==="login"?"join-item btn btn-outline bg-neutral text-neutral-400 border-0 font-bold":"join-item btn btn-outline text-neutral font-bold"} onClick={()=>{
                 navigate("/login");
                 setSwitching("login");
                 }}>Login</button>
