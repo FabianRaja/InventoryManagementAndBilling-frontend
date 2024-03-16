@@ -24,7 +24,7 @@ export default function WorkSpace({children}){
         </div>
       </div>
     </div>
-    <div className="dropdown dropdown-end z-40 topbar-dropdown-section">
+    <div className="dropdown dropdown-end topbar-dropdown-section">
       <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full ">
           <img alt="Tailwind CSS Navbar component" src="https://img.freepik.com/free-psd/3d-icon-social-media-app_23-2150049569.jpg?w=740&t=st=1710230092~exp=1710230692~hmac=e122b0db47a534e41b1d5ac3ceb5034830b4dd8e4556009f1788e838ed980305" />

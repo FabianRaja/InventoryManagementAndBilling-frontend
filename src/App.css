@@ -97,3 +97,24 @@ undefined
 hr{
     border:2px solid black;
 }
+.content-center-section{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.visibility-section{
+    z-index: 50;
+}
+::-webkit-scrollbar{
+    width:8px;
+}
+::-webkit-scrollbar-track{
+    background-color: #6f8ece;
+}
+::-webkit-scrollbar-thumb{
+    background-color:#32428a;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover{
+    background-color: #222e6b;
+}

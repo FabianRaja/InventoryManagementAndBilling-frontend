@@ -47,9 +47,9 @@ export default function AddProductPage(){
     },[])
 
     return(
-        <div className="add-product-section ">
+        <div className="add-product-section">
             <WorkSpace>
-                <div className="p-10 ml-80">
+                <div className="content-center-section mt-10">
                 <div className="card w-96 glass adding-product-section">
             <div className="card-body text-center ">
             <h2 className="card-title text-center justify-center ">ADDING A PRODUCT</h2>

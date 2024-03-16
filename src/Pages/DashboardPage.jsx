@@ -134,28 +134,29 @@ export default function DashboardPage(){
         <div className="dashboard-section text-center">
           
             <WorkSpace>
-                
-            <div className="stats stats-vertical lg:stats-horizontal shadow mt-4 mb-4">
-            <div className="stats glass">
+
+  <div className="stats stats-vertical shadow lg:stats-horizontal mt-4 mb-4">
   
-            <div className="stat place-items-center">
-                <div className="stat-title font-black">TOTAL PRODUCTS</div>
-                <div className="stat-value text-xl">{data?data.length:0}</div>
-            </div>
-            
-            <div className="stat place-items-center">
-                <div className="stat-title font-black">TOTAL QUANTITY</div>
-                <div className="stat-value text-xl">{quantity}</div>            
-            </div>
-            
-            <div className="stat place-items-center">
-                <div className="stat-title font-black">TOTAL STORE VALUE</div>
-                <div className="stat-value text-xl">{value}</div>
-            </div>
-            
-            </div>
-            </div>
-            
+  <div className="stat">
+    <div className="stat-title">Total Products</div>
+    <div className="stat-value ">{data?data.length:0}</div>
+    <div className="stat-desc">(number of products)</div>
+  </div>
+  
+  <div className="stat">
+    <div className="stat-title">Total Quantity</div>
+    <div className="stat-value ">{quantity}</div>
+    <div className="stat-desc">(number of quantity)</div>
+  </div>
+  
+  <div className="stat">
+  <div className="stat-title">Total Value</div>
+    <div className="stat-value ">{value}</div>
+    <div className="stat-desc">(value of stock)</div>
+  </div>
+  
+</div>
+                       
             <hr/>
             
             <div className="overflow-x-auto">

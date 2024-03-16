@@ -52,7 +52,7 @@ export default function EditProductPage(){
         <div className="edit-product-section ">
             <WorkSpace>
                 <div className="background-set">
-                <div className="p-10 ml-80">
+                <div className="content-center-section mt-10">
                 <div className="card w-96 glass">
             <div className="card-body text-center ">
             <h2 className="card-title text-center justify-center ">EDITING A PRODUCT</h2>

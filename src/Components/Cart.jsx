@@ -162,13 +162,18 @@ export default function Cart(){
   </table>
 </div>
 <h1 className="font-bold mt-5 uppercase">Total Price - {totalPrice}</h1>
-<div className="tooltip tooltip tooltip-right" data-tip="Pay In Cash">
-<button className="btn btn-neutral mt-5 mb-1" onClick={()=>billProductFunction()}>{loading==="on"?<span className="loading loading-ball loading-xs"></span>:"Get Bill"}</button><br/>
-</div>
-<h3>or</h3> 
-<div className="tooltip tooltip tooltip-right" data-tip="Via Razorpay">
-  <button className="btn btn-neutral mt-2 mb-3" onClick={()=>payOnlineFunction()}>Pay Online</button>
-</div>
+{totalPrice!=0?(
+  <div>
+  <div className="tooltip tooltip tooltip-right" data-tip="Pay In Cash">
+  <button className="btn btn-neutral mt-5 mb-1" onClick={()=>billProductFunction()}>{loading==="on"?<span className="loading loading-ball loading-xs"></span>:"Get Bill"}</button><br/>
+  </div>
+  <h3>or</h3> 
+  <div className="tooltip tooltip tooltip-right" data-tip="Via Razorpay">
+    <button className="btn btn-neutral mt-2 mb-3" onClick={()=>payOnlineFunction()}>Pay Online</button>
+  </div>
+  </div>
+):""}
+
 </div>
     )
 }
