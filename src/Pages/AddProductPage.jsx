@@ -29,7 +29,6 @@ export default function AddProductPage(){
                 },1000);
                 setTimeout(()=>{
                     navigate("/dashboard")
-                    window.location.reload();
                 },2000)
             }).catch((response)=>{
                 setLoading("off");

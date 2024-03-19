@@ -10,7 +10,7 @@ export default function DashboardPage(){
   //useNavigate is used to navigate between pages
   const navigate=useNavigate();
   //required states is imported using useContext
-  const {data,setData,setProductName,setProductPrice,setProductQuantity,cartObj,cartCount,setCartCount}=useContext(AppCtx);
+  const {data,setData,setProductName,setProductPrice,setProductQuantity,cartObj,cartCount,setCartCount,setLoad,load}=useContext(AppCtx);
   
   //total products quantity is calculated and stored
   let quantity=0;
@@ -28,7 +28,7 @@ export default function DashboardPage(){
   }
   //function to delete product from the database and the response is handled
   async function deleteFunction(productName){
-    Swal.fire({
+    await Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
       icon: "warning",
@@ -48,11 +48,10 @@ export default function DashboardPage(){
           text: "Product has been deleted",
           icon: "success"
         });
-        //to reload the page
-        window.location.reload();
       }
     });
- 
+    //to refetch data after deleting
+    setLoad(1);
   }
   //function to edit product
   function editFunction(name,quantity,price){
@@ -130,8 +129,44 @@ export default function DashboardPage(){
       }else{
           console.log(response.message);
       }
-      }).catch((response)=>{console.log(response.message)});   
-  },[])
+      }).catch((response)=>{console.log(response.message)}); 
+      console.log("useEffect");  
+  },[]);
+
+  useEffect(()=>{
+    if(!localStorage.getItem("token")){
+      navigate("/")
+  };
+  setProductName("");
+  setProductQuantity("");
+  setProductPrice("");
+
+  if(load===1){
+    //fetching data
+  const object={
+    id:localStorage.getItem("id")
+  }
+  //function to get all data from the database is called and response is handled
+  getAllData(object).then(async(response)=>{
+    if(response.message==="all product fetched Successfully"){
+        const object=response.data;
+        object.sort((a,b)=>{
+            const nameA=a.productName.toLowerCase();
+            const nameB=b.productName.toLowerCase();
+            if (nameA < nameB) return -1;
+            if (nameA > nameB) return 1;
+            return 0;
+        })
+        setData(object);
+    }else{
+        console.log(response.message);
+    }
+    }).catch((response)=>{console.log(response.message)});
+
+    console.log("extra useEffect");
+    setLoad(2);
+  }
+},[load===1])
 
     return(
       

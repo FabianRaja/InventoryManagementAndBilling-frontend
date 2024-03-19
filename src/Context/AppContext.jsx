@@ -16,10 +16,11 @@ export default function AppContext({children}){
     const [confirm,setConfirm]=useState("off");
     const [cartCount,setCartCount]=useState(0);
     const [totalPrice,setTotalPrice]=useState(0);
+    const [load,setLoad]=useState();
    
     return(
         <AppCtx.Provider
-        value={{result,setResult,switching,setSwitching,loading,setLoading,data,setData,productName,productQuantity,productPrice,setProductName,setProductPrice,setProductQuantity,cartObj,setCartObj,confirm,setConfirm,cartCount,setCartCount,totalPrice,setTotalPrice}}
+        value={{result,setResult,switching,setSwitching,loading,setLoading,data,setData,productName,productQuantity,productPrice,setProductName,setProductPrice,setProductQuantity,cartObj,setCartObj,confirm,setConfirm,cartCount,setCartCount,totalPrice,setTotalPrice,load,setLoad}}
         >
             {children}
         </AppCtx.Provider>

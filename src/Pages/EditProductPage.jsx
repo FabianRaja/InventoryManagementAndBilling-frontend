@@ -37,9 +37,8 @@ export default function EditProductPage(){
                     setLoading("off");
                     setResult(response.message);
                 },1000);
-                setTimeout(()=>{
+                setTimeout(()=>{                   
                     navigate("/dashboard");
-                    window.location.reload();
                 },2000)
             }).catch((response)=>{
                 setTimeout(()=>{

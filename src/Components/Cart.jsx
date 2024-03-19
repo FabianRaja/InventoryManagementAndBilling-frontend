@@ -66,7 +66,8 @@ export default function Cart(){
     await setLoading("off");
     setTimeout(()=>{
       navigate("/dashboard");
-      window.location.reload();
+      setCartObj([]);
+      setCartCount(0);
     },2000)
   }
 
@@ -102,7 +103,8 @@ export default function Cart(){
             });
             setTimeout(()=>{
               navigate("/dashboard");
-              window.location.reload();
+              setCartObj([]);
+              setCartCount(0);
             },500)
           },
           prefill: {
