@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+import daisyui from 'daisyui'
 export default {
   content: [
     "./index.html",
@@ -11,5 +12,5 @@ export default {
       'lg': '456px'
     },
   },
-  plugins: [require("daisyui")],
+  plugins: [daisyui],
 }
